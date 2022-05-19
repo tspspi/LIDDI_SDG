@@ -1,8 +1,9 @@
-function sdg1032x_SetWaveAmplitude(host, channel, frq):
+function sdg1032x_SetWaveAmplitude(host, channel, frq)
     netClient = tcpclient(host, 5024);
     configureTerminator(netClient,"LF");
     if channel == 1
-        writeline(netClient, [ "C1:BSWV AMP," num2str(frq) ])
+        writeline(netClient, strcat("C1:BSWV AMP,", num2str(frq)))
     else
-        writeline(netClient, [ "C2:BSWV AMP," num2str(frq) ])
+        writeline(netClient, strcat("C2:BSWV AMP,", num2str(frq)))
+    end
     clear netClient
